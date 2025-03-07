@@ -1,12 +1,29 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ToastService } from './core/services/toast.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterModule],
+  providers: [MessageService],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'aldimi-backoffice';
+  menuModeOptions = [
+    { label: 'Static', value: 'static' },
+    { label: 'Overlay', value: 'overlay' },
+  ];
+
+  constructor(
+    private readonly toastService: ToastService,
+    private readonly messageService: MessageService
+  ) {
+    this.toastService.getMessage().subscribe((message) => {
+      if (message.severity != '') {
+        this.messageService.add(message);
+      }
+    });
+  }
 }
