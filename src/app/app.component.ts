@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  public title = 'juega-objetos';
   menuModeOptions = [
     { label: 'Static', value: 'static' },
     { label: 'Overlay', value: 'overlay' },

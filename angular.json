@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aldimi-backoffice": {
+    "juega-objetos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/aldimi-backoffice",
+            "outputPath": "dist/juega-objetos",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "aldimi-backoffice:build:production"
+              "buildTarget": "juega-objetos:build:production"
             },
             "development": {
-              "buildTarget": "aldimi-backoffice:build:development"
+              "buildTarget": "juega-objetos:build:development"
             }
           },
           "defaultConfiguration": "development"

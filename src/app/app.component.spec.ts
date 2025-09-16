@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'aldimi-backoffice' title`, () => {
+  it(`should have the 'juega-objetos' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('aldimi-backoffice');
+    expect(app.title).toEqual('juega-objetos');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, aldimi-backoffice');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, juega-objetos');
   });
 });
