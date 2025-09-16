@@ -6,7 +6,7 @@ import {
 } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { routes } from './app.routes';
-import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { authInterceptor } from '@core/interceptors/auth.interceptor';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import { Preset } from '../assets/layout/preset';

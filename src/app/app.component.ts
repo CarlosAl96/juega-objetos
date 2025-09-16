@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ToastService } from './core/services/toast.service';
+import { ToastService } from '@core/services/toast.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
