@@ -1,3 +1,14 @@
 @use "./tailwind.css";
 @use "./assets/layout/layout.scss";
 @use "primeicons/primeicons.css";
+
+:root {
+	--color-primary: #003366;
+	--color-accent: #ffcc00;
+	--color-accent-hover: #e6b800;
+	--color-bg: #ffffff;
+
+	--font-md: 16px;
+	--font-lg: 18px;
+	--font-xl: 20px;
+}

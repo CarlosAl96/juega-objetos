@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LandingLayoutComponent } from './landing/shared/layout/layout.component';
 
 export const routes: Routes = [
   {
@@ -9,6 +10,7 @@ export const routes: Routes = [
 
   {
     path: '',
+    component: LandingLayoutComponent,
     loadChildren: () =>
       import('./landing/landing.routes').then((m) => m.LANDING_ROUTES),
   },
