@@ -1,3 +1,5 @@
 export interface ApiResponse<T> {
-  response: T;
+  response: {
+    data: T;
+  };
 }
