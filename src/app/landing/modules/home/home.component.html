@@ -1,12 +1,16 @@
 <div class="container">
   <h2 class="title">¡Participa en la Lotería de Objetos!</h2>
-
   <div class="cards-grid">
     @for (item of items; track $index) {
     <div class="card">
-      <div class="card__image-wrapper">
+      <div class="card__badge">{{ item.object_number }}</div>
+      <div class="card__circle">
         @if (!isLoaded(item.id)) {
-        <p-skeleton width="100%" height="100%"></p-skeleton>
+        <p-skeleton
+          width="100%"
+          height="100%"
+          style="border-radius: 50%"
+        ></p-skeleton>
         }
         <img
           loading="lazy"
@@ -18,9 +22,7 @@
           (error)="onImgError(item.id, $event)"
         />
       </div>
-      <div class="card__body">
-        <span class="card__title">{{ item.name }}</span>
-      </div>
+      <div class="card__label">{{ item.name }}</div>
     </div>
     }
   </div>
