@@ -1,36 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
+import { Object } from '../../../core/models/object';
+import { ObjectsService } from '@app/core/services/objects.service';
 
 @Component({
   selector: 'app-home',
   imports: [CommonModule, CardModule, SkeletonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-  items: { id: number; name: string; imageUrl: string }[] = [];
+export class HomeComponent implements OnInit {
+  public items: Object[] = [];
   private loadedIds = new Set<number>();
 
-  constructor() {
-    const images = [
-      { name: 'Cama', file: 'cama.jpeg' },
-      { name: 'Mesa', file: 'mesa.jpeg' },
-      { name: 'Silla', file: 'silla.jpeg' },
-      { name: 'Sofá', file: 'sofa.jpeg' },
-    ];
-
-    const total = 30;
-    this.items = Array.from({ length: total }, (_, i) => {
-      const img = images[i % images.length];
-      return {
-        id: i + 1,
-        name: img.name,
-        imageUrl: `assets/images/${img.file}`,
-      };
-    });
-  }
+  constructor(private readonly objectsService: ObjectsService) {}
 
   trackById(index: number, item: { id: number }): number {
     return item.id;
@@ -40,15 +25,29 @@ export class HomeComponent {
     return this.loadedIds.has(id);
   }
 
-  onImgLoad(id: number) {
+  private getObjects(): void {
+    this.objectsService.getObjects().subscribe({
+      next: (response) => {
+        this.items = response.response.data;
+      },
+      error: (error) => {
+        console.error('Error fetching objects:', error);
+      },
+    });
+  }
+
+  ngOnInit(): void {
+    this.getObjects();
+  }
+
+  public onImgLoad(id: number): void {
     this.loadedIds.add(id);
   }
 
-  onImgError(id: number, ev: Event) {
-    // Fallback to the first image if one fails, then mark as loaded
+  public onImgError(id: number, ev: Event): void {
     const imgEl = ev.target as HTMLImageElement;
     if (imgEl && imgEl.src.indexOf('assets/images/cama.jpeg') === -1) {
-      imgEl.src = 'assets/images/cama.jpeg';
+      imgEl.src = 'assets/images/logo.jpeg';
     }
     this.loadedIds.add(id);
   }

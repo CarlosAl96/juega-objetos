@@ -10,7 +10,7 @@
         }
         <img
           loading="lazy"
-          [src]="item.imageUrl"
+          [src]="'/assets/images/objects/' + item.object_number + '.jpeg'"
           [alt]="item.name"
           class="card__image"
           [class.loaded]="isLoaded(item.id)"

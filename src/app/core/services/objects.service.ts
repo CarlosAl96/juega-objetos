@@ -3,6 +3,7 @@ import { environment } from '@env/environment';
 import { catchError, Observable, throwError } from 'rxjs';
 import { ApiResponse } from '../models/apiResponse';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Object } from '../models/object';
 
 @Injectable({
   providedIn: 'root',
